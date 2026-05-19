@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.vscode/
+
+# Runtime outputs
+/runs/
+run_code.sh
+run_gen_latent.sh
+run_ijns.sh

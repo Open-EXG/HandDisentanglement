@@ -1,0 +1,9 @@
+numpy
+scipy
+scikit-learn
+matplotlib
+seaborn
+tabulate
+PyYAML
+torch
+pytorch-lightning==1.9.4
