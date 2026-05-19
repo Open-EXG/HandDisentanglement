@@ -2,6 +2,8 @@
 
 This repository contains the public model release of our paper: "[Exploring pattern-specific components associated with hand gestures through different sEMG measures](https://link.springer.com/article/10.1186/s12984-024-01526-3)" and "[Understanding of task-specific and subject-specific components in surface EMG](https://www.worldscientific.com/doi/abs/10.1142/S0129065725500467)".
 
+![Network Architecture](Disentanglement%20Network.png)
+
 Disentangled representation learning for hand gesture data. The training script learns a pattern branch (`xp`) and a subject branch (`xs`), exports latent features, and evaluates them with downstream classifiers.
 
 ## Repository Structure
