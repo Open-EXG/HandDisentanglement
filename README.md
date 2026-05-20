@@ -2,9 +2,126 @@
 
 This repository contains the public model release of our paper: "[Exploring pattern-specific components associated with hand gestures through different sEMG measures](https://link.springer.com/article/10.1186/s12984-024-01526-3)" and "[Understanding of task-specific and subject-specific components in surface EMG](https://www.worldscientific.com/doi/abs/10.1142/S0129065725500467)".
 
-![Network Architecture](Disentanglement%20Network.png)
 
-Disentangled representation learning for hand gesture data. The training script learns a pattern branch (`xp`) and a subject branch (`xs`), exports latent features, and evaluates them with downstream classifiers.
+## 📖 Overview
+
+Surface electromyography (sEMG)-based gesture recognition is widely used in human-machine interaction (HMI), prosthetic control, wearable interfaces, and rehabilitation systems. However, conventional gesture recognition models often suffer from **poor cross-subject generalization**, since sEMG signals contain strong **subject-specific variations** caused by differences in physiology, muscle contraction habits, and electrode placement.
+
+This work proposes that sEMG signals consist of two disentangled components:
+
+- **Pattern-specific components**  
+  Shared across users and associated only with gesture patterns.
+
+- **Subject-specific components**  
+  Related to individual physiological characteristics and recording variations.
+
+To separate these two components, we propose a **GAN-enhanced disentanglement framework** based on a multi-encoder autoencoder architecture. The extracted pattern-specific components are then used for generalized gesture recognition in cross-subject scenarios.
+
+---
+
+## ✨ Key Contributions
+
+### 1. Pattern-Specific sEMG Disentanglement
+
+We introduce a disentanglement framework that separates:
+
+- gesture-related information
+- subject-related information
+
+from high-density sEMG signals using:
+
+- dual encoders
+- shared decoder
+- adversarial discriminator (GAN)
+
+This allows the system to learn gesture representations that are more invariant across users.
+
+---
+
+### 2. Physiological Interpretability
+
+The extracted pattern-specific components are reconstructed into spatial heatmaps aligned with the electrode topology, enabling visualization of muscle activation patterns during gestures.
+
+The resulting heatmaps show:
+
+- similarity across subjects
+- clear differences across gestures
+- correspondence with forearm muscle activation regions
+
+This provides neurophysiological interpretability for the learned representations.
+
+---
+
+## 🧠 Method Overview
+
+### Network Architecture
+
+The proposed framework consists of:
+
+- Pattern-specific encoder (`Ep`)
+- Subject-specific encoder (`Es`)
+- Shared decoder (`D`)
+- GAN discriminator
+
+The training objective includes triplet loss, reconstruction loss, cross-reconstruction loss, and adversarial loss.
+
+<p align="center">
+  <img src="./assets/fig/Disentanglement_Network.png" width="900"/>
+</p>
+
+---
+
+## 📊 Dataset
+
+Experiments were conducted on the open-source **Hyser HD-sEMG dataset**.
+
+### Dataset Details
+
+- 20 subjects
+- 256-channel HD-sEMG
+- 10 hand gestures
+- 2048 Hz sampling rate
+- 4 electrode arrays (8×8 each)
+- dynamic gesture tasks only
+
+### Selected Gestures
+
+<p align="center">
+  <img src="./assets/fig/10known_gestures.jpg" width="1000"/>
+</p>
+
+---
+
+## 🏆 Main Results
+
+### Gesture Recognition Accuracy
+
+| Input Measure | Best Accuracy |
+|---|---|
+| Raw Signal | 52.61% |
+| sEMG Envelope | 67.52% |
+| STFT | 79.41% |
+| RMS | 74.41% |
+| WL | 76.23% |
+| All Time-Domain Features | 82.51% |
+| STFT + Time-Domain Features | **84.30%** |
+
+---
+
+### Visualization Results
+
+The reconstructed heatmaps demonstrate:
+
+- compact and gesture-specific activation regions
+- cross-subject consistency
+- physiologically meaningful muscle activation localization
+
+Compared with waveform inputs, STFT and time-domain features produce more discriminative and interpretable gesture patterns.
+
+<p align="center">
+  <img src="./assets/fig/Pattern_Recons.png" width="1400"/>
+</p>
+
 
 ## Repository Structure
 
@@ -97,3 +214,41 @@ python step1_test_classifier.py --root_dir ./runs --trial_id 5 --test_id 1 --ses
 ```
 
 Outputs are written under `ROOT_DIR/models`, `ROOT_DIR/latent_features`, and `ROOT_DIR/outputs`.
+
+---
+
+## 📌 Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@article{yuan2024exploring,
+  title={Exploring pattern-specific components associated with hand gestures through different sEMG measures},
+  author={Yuan, Yangyang and Liu, Jionghui and Dai, Chenyun and Liu, Xiao and Hu, Bo and Fan, Jiahao},
+  journal={Journal of neuroengineering and rehabilitation},
+  volume={21},
+  number={1},
+  pages={233},
+  year={2024},
+  publisher={Springer}
+}
+
+@article{yuan2025understanding,
+  title={Understanding of task-specific and subject-specific components in surface EMG},
+  author={Yuan, Yangyang and Liu, Jionghui and Jiang, Xinyu and Fan, Jiahao and Chou, Chih-Hong and Dai, Chenyun},
+  journal={International Journal of Neural Systems},
+  volume={35},
+  number={09},
+  pages={2550046},
+  year={2025},
+  publisher={World Scientific}
+}
+```
+
+---
+
+## 📬 Contact
+
+For questions or collaborations, please contact:
+
+- Yangyang Yuan — yyyuan25@sjtu.edu.cn

@@ -36,10 +36,11 @@ def main(args):
     # model = Generator_gan(args)
     # model = Generator_multiinput(args)
 
-    # dm = DataModule(data_dir=args.data_dir, test_id=args.test_id, batch_size=args.batch_size, features=args.features, feature_dim=args.feature_dim, opts=args,
-    #                 session_id=args.session_id, purpose=args.purpose, shuffle=True)
-    dm = DataModule_session(data_dir=args.data_dir, test_id=args.test_id, batch_size=args.batch_size, features=args.features, feature_dim=args.feature_dim, opts=args,
+    dm = DataModule(data_dir=args.data_dir, test_id=args.test_id, batch_size=args.batch_size, features=args.features, feature_dim=args.feature_dim, opts=args,
                     session_id=args.session_id, purpose=args.purpose, shuffle=True)
+    # dm = DataModule_session(data_dir=args.data_dir, test_id=args.test_id, batch_size=args.batch_size, features=args.features, feature_dim=args.feature_dim, opts=args,
+    #                 session_id=args.session_id, purpose=args.purpose, shuffle=True)
+    print('data prepared')
     # print('preparing data')
     # dm.prepare_data()
     # dm.setup()
@@ -136,8 +137,8 @@ if __name__ == '__main__':
     config = Config()
     parser = ArgumentParser()
     VERSION = 0
-    parser.add_argument('--test_id', type=int, nargs='+', default=[1],
-                        help='Test subject ids. Data files are expected under subjectXX_sessionY folders.')
+    parser.add_argument('--test_id', type=int, nargs='+', default=[1,2,3,4],
+                        help='Loaded subject ids. Data files are expected under subjectXX_sessionY folders.')
     parser.add_argument("--session_id", type=int, default=1,
                         help='Training session id. DataModule_session uses the other session as test data.')
     parser.add_argument('--trail_id', type=int, default=1,

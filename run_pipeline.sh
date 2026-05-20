@@ -3,9 +3,9 @@ set -euo pipefail
 
 ROOT_DIR="${ROOT_DIR:-./runs}"
 DATA_ROOT="${DATA_ROOT:-/nas/data_EMG/data_DT}"
-TRIAL_ID="${TRIAL_ID:-5}"
+TRIAL_ID="${TRIAL_ID:-1}"
 DATA_TYPE="${DATA_TYPE:-unslice_features_half}"
-TEST_IDS="${TEST_IDS:-1}"
+TEST_IDS="${TEST_IDS:-1 2 3 4 5}"
 SESSION_ID="${SESSION_ID:-1}"
 DEVICE_IDS="${DEVICE_IDS:-0}"
 ACCELERATOR="${ACCELERATOR:-gpu}"

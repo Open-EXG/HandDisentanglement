@@ -299,9 +299,9 @@ if __name__ == '__main__':
                         help='Root directory created by step0_main_code.py.')
     parser.add_argument('--trial_id', type=int, nargs='+', default=[1],
                         help='One or more trial ids. Multiple ids concatenate latent features.')
-    parser.add_argument('--test_id', type=int, nargs='+', default=[1],
+    parser.add_argument('--test_id', type=int, nargs='+', default=[1,5,9,13,17],
                         help='Subject ids to evaluate.')
-    parser.add_argument('--session_id', type=int, nargs='+', default=[1],
+    parser.add_argument('--session_id', type=int, nargs='+', default=[1,2],
                         help='Session ids to evaluate.')
     parser.add_argument('--purpose', type=str, default='p', choices=['p', 's'],
                         help='p evaluates gesture/pattern component xp; s evaluates subject component xs.')
