@@ -2,7 +2,6 @@
 
 This repository contains the public model release of our paper: "[Exploring pattern-specific components associated with hand gestures through different sEMG measures](https://link.springer.com/article/10.1186/s12984-024-01526-3)" and "[Understanding of task-specific and subject-specific components in surface EMG](https://www.worldscientific.com/doi/abs/10.1142/S0129065725500467)".
 
-
 ## 📖 Overview
 
 Surface electromyography (sEMG)-based gesture recognition is widely used in human-machine interaction (HMI), prosthetic control, wearable interfaces, and rehabilitation systems. However, conventional gesture recognition models often suffer from **poor cross-subject generalization**, since sEMG signals contain strong **subject-specific variations** caused by differences in physiology, muscle contraction habits, and electrode placement.
@@ -10,10 +9,9 @@ Surface electromyography (sEMG)-based gesture recognition is widely used in huma
 This work proposes that sEMG signals consist of two disentangled components:
 
 - **Pattern-specific components**  
-  Shared across users and associated only with gesture patterns.
-
+Shared across users and associated only with gesture patterns.
 - **Subject-specific components**  
-  Related to individual physiological characteristics and recording variations.
+Related to individual physiological characteristics and recording variations.
 
 To separate these two components, we propose a **GAN-enhanced disentanglement framework** based on a multi-encoder autoencoder architecture. The extracted pattern-specific components are then used for generalized gesture recognition in cross-subject scenarios.
 
@@ -35,8 +33,6 @@ from high-density sEMG signals using:
 - adversarial discriminator (GAN)
 
 This allows the system to learn gesture representations that are more invariant across users.
-
----
 
 ### 2. Physiological Interpretability
 
@@ -65,9 +61,7 @@ The proposed framework consists of:
 
 The training objective includes triplet loss, reconstruction loss, cross-reconstruction loss, and adversarial loss.
 
-<p align="center">
-  <img src="./fig/Disentanglement%20Network.png" width="900"/>
-</p>
+
 
 ---
 
@@ -86,9 +80,7 @@ Experiments were conducted on the open-source **Hyser HD-sEMG dataset**.
 
 ### Selected Gestures
 
-<p align="center">
-  <img src="./fig/10known_gestures.jpg" width="1000"/>
-</p>
+
 
 ---
 
@@ -96,17 +88,17 @@ Experiments were conducted on the open-source **Hyser HD-sEMG dataset**.
 
 ### Gesture Recognition Accuracy
 
-| Input Measure | Best Accuracy |
-|---|---|
-| Raw Signal | 52.61% |
-| sEMG Envelope | 67.52% |
-| STFT | 79.41% |
-| RMS | 74.41% |
-| WL | 76.23% |
-| All Time-Domain Features | 82.51% |
-| STFT + Time-Domain Features | **84.30%** |
 
----
+| Input Measure               | Best Accuracy |
+| --------------------------- | ------------- |
+| Raw Signal                  | 52.61%        |
+| sEMG Envelope               | 67.52%        |
+| STFT                        | 79.41%        |
+| RMS                         | 74.41%        |
+| WL                          | 76.23%        |
+| All Time-Domain Features    | 82.51%        |
+| STFT + Time-Domain Features | **84.30%**    |
+
 
 ### Visualization Results
 
@@ -118,12 +110,13 @@ The reconstructed heatmaps demonstrate:
 
 Compared with waveform inputs, STFT and time-domain features produce more discriminative and interpretable gesture patterns.
 
-<p align="center">
-  <img src="./fig/Pattern%20Recons.png" width="1400"/>
-</p>
 
 
-## Repository Structure
+---
+
+## 🛖 Repository
+
+### Structure
 
 - `step0_main_code.py`: train/test the disentanglement model and export latent `.npz` files.
 - `data_module.py`: PyTorch Lightning data modules for subject/session splits.
@@ -134,7 +127,7 @@ Compared with waveform inputs, STFT and time-domain features produce more discri
 - `step4_Statistical_Analysis.py`: statistical comparison of classifier accuracy files.
 - `run_pipeline.sh`: complete train, test, and classifier workflow.
 
-## Installation
+### Installation
 
 ```bash
 conda create -n hand_dt python=3.10
@@ -144,7 +137,7 @@ pip install -r requirements.txt
 
 The original code targets `pytorch-lightning==1.9.4`. Install a CUDA-compatible PyTorch build for your machine if the default `pip install torch` is not suitable.
 
-## Data Layout
+### Data Layout
 
 Each preprocessed data folder should contain subject/session folders:
 
@@ -161,7 +154,7 @@ DATA_ROOT/
 
 `settings.py` maps `--data_type` to these folder names. You can either pass `--data_root /path/to/DATA_ROOT` or bypass the mapping with `--data_dir /path/to/specific/preprocessed/folder`.
 
-## Main Parameters
+### Main Parameters
 
 `step0_main_code.py`:
 
@@ -189,7 +182,7 @@ DATA_ROOT/
 - `--methods`: classifier list, e.g. `--methods knn rf svm`.
 - `--latent_dim`: flattened latent branch dimension. Default `512`.
 
-## Run
+### Run
 
 Edit environment variables as needed, then run:
 
@@ -251,4 +244,5 @@ If you find this work useful, please cite:
 
 For questions or collaborations, please contact:
 
-- Yangyang Yuan — yyyuan25@sjtu.edu.cn
+- Yangyang Yuan — [yyyuan25@sjtu.edu.cn](mailto:yyyuan25@sjtu.edu.cn)
+
