@@ -66,7 +66,7 @@ The proposed framework consists of:
 The training objective includes triplet loss, reconstruction loss, cross-reconstruction loss, and adversarial loss.
 
 <p align="center">
-  <img src="./assets/fig/Disentanglement_Network.png" width="900"/>
+  <img src="./fig/Disentanglement%20Network.png" width="900"/>
 </p>
 
 ---
@@ -87,7 +87,7 @@ Experiments were conducted on the open-source **Hyser HD-sEMG dataset**.
 ### Selected Gestures
 
 <p align="center">
-  <img src="./assets/fig/10known_gestures.jpg" width="1000"/>
+  <img src="./fig/10known_gestures.jpg" width="1000"/>
 </p>
 
 ---
@@ -119,7 +119,7 @@ The reconstructed heatmaps demonstrate:
 Compared with waveform inputs, STFT and time-domain features produce more discriminative and interpretable gesture patterns.
 
 <p align="center">
-  <img src="./assets/fig/Pattern_Recons.png" width="1400"/>
+  <img src="./fig/Pattern%20Recons.png" width="1400"/>
 </p>
 
 
